@@ -19,16 +19,16 @@ export class User {
   fullName?: string;
 
   @OneToMany(() => RefreshToken, (rt) => rt.user)
-  refreshTokens: RefreshToken[] = [];
+  refreshTokens: RefreshToken[];
 
   @OneToMany(() => Note, (note) => note.user)
-  notes: Note[] = [];
+  notes: Note[];
 
   @OneToMany(() => Tag, (tag) => tag.user)
-  tags: Tag[] = [];
+  tags: Tag[];
 
   @OneToMany(() => Activity, (act) => act.user)
-  activities: Activity[] = [];
+  activities: Activity[];
 
   @CreateDateColumn()
   createdAt: Date;

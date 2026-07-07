@@ -40,11 +40,11 @@ export class Note {
   updatedAt: Date;
 
   @OneToMany(() => ChecklistItem, (item) => item.note)
-  checklist: ChecklistItem[] = [];
+  checklist: ChecklistItem[];
 
   @OneToMany(() => NoteTag, (nt) => nt.note)
-  tags: NoteTag[] = [];
+  tags: NoteTag[];
 
   @OneToMany(() => Activity, (a) => a.note)
-  activities: Activity[] = [];
+  activities: Activity[];
 }

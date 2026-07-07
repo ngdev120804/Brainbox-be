@@ -17,7 +17,7 @@ export class Tag {
   userId: number;
 
   @OneToMany(() => NoteTag, (nt) => nt.tag)
-  notes: NoteTag[] = [];
+  notes: NoteTag[];
 
   @CreateDateColumn()
   createdAt: Date;
