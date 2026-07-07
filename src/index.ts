@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRouter from './routes/auth';
+import notesRouter from './routes/notes';
 import { initDb } from './db';
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(cors({
 }));
 
 app.use('/api/auth', authRouter);
+app.use('/api/notes', notesRouter);
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
