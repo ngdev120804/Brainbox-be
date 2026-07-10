@@ -19,7 +19,18 @@ app.use(cors({
   origin: (origin, callback) => {
     // allow non-browser requests like curl/postman
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+
+    const normalize = (u?: string) => (u ? u.replace(/\/$/, '') : u);
+    const normOrigin = normalize(origin as string);
+    const normAllowed = allowedOrigins.map(normalize);
+
+    if (normAllowed.includes(normOrigin)) return callback(null, true);
+
+    // allow any localhost/127.0.0.1 origin (different dev ports)
+    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(normOrigin || '')) {
+      return callback(null, true);
+    }
+
     return callback(new Error('CORS not allowed'));
   },
   credentials: true,

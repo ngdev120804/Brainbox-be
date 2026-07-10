@@ -42,6 +42,9 @@ export class Note {
   @OneToMany(() => ChecklistItem, (item) => item.note)
   checklist: ChecklistItem[];
 
+  @Column({ type: 'jsonb', nullable: true, name: 'checklist' })
+  checklistJson?: any;
+
   @OneToMany(() => NoteTag, (nt) => nt.note)
   tags: NoteTag[];
 

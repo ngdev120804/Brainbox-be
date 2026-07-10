@@ -12,6 +12,9 @@ export class ChecklistItem {
   @Column()
   noteId: number;
 
+  @Column({ nullable: true })
+  clientId?: string;
+
   @Column()
   content: string;
 

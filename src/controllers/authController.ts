@@ -115,6 +115,6 @@ export const me = async (req: any, res: Response) => {
   const userId = req.user?.id;
   if (!userId) return res.status(401).json({ message: 'Not authenticated' });
   const userRepo = getUserRepo();
-  const user = await userRepo.findOne({ where: { id: userId }, select: { id: true, username: true, fullName: true, createdAt: true } });
+  const user = await userRepo.findOne({ where: { id: userId }, select: { id: true, username: true, fullName: true, createdAt: true, avatarUrl: true } as any });
   return res.json({ user });
 };
